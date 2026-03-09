@@ -6,18 +6,18 @@ from EmotionDetection.emotion_detection import emotion_detector
 
 app = Flask("EmotionDetector")
 
-'''
-this renders index page
-'''
 @app.route ('/')
 def render_index_page():
+    '''
+    this renders index page
+    '''
     return render_template("index.html")
 
-'''
-this handles get request
-'''
 @app.route('/emotionDetector')
 def request_get():
+    '''
+    this handles get request
+    '''
     text_to_analyse = request.args.get("textToAnalyze")
     response = emotion_detector(text_to_analyse)
     if response['dominant_emotion'] is None:
